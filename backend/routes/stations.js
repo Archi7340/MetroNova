@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ctrl = require('../controllers/stationController');
+const ctrl = require('../controllers/stationcontroller');
 
 router.get('/',              ctrl.getAllStations);
 router.get('/interchanges',  ctrl.getInterchanges);
