@@ -14,7 +14,7 @@ export function useMetroRoute() {
     setError(null);
     setResult(null);
     try {
-      const { data } = await axios.get(`${BASE}/route`, { params: { from, to, algo } });
+      const { data } = await axios.get(`${BASE}/api/route`, { params: { from, to, algo } });
       setResult(data);
     } catch (e) {
       setError(e.response?.data?.error || e.message);
@@ -28,7 +28,7 @@ export function useMetroRoute() {
     setError(null);
     setCompared(null);
     try {
-      const { data } = await axios.get(`${BASE}/route/compare`, { params: { from, to } });
+      const { data } = await axios.get(`${BASE}/api/route/compare`, { params: { from, to } });
       setCompared(data);
     } catch (e) {
       setError(e.response?.data?.error || e.message);
@@ -50,9 +50,9 @@ export function useStations() {
     setLoading(true);
     try {
       const [s, ic, conn] = await Promise.all([
-        axios.get(`${BASE}/stations`),
-        axios.get(`${BASE}/stations/interchanges`),
-        axios.get(`${BASE}/stations/connectivity`),
+        axios.get(`${BASE}/api/stations`),
+        axios.get(`${BASE}/api/stations/interchanges`),
+        axios.get(`${BASE}/api/stations/connectivity`),
       ]);
       setStations(s.data);
       setInterchanges(ic.data);
